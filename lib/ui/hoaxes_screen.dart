@@ -33,54 +33,54 @@ class _HoaxesScreenState extends State<HoaxesScreen> {
                 return InkWell(
                   onTap: () {},
                   child: Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 12.0),
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      elevation: 6,
+                      shadowColor: Colors.black.withOpacity(0.2),
                       child: Container(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(12.0),
                         decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+                          color: Colors
+                              .redAccent, // Warna latar belakang yang lebih cerah
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                '${snapshot.data?[index].title}',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16.0,
-                                ),
+                            Text(
+                              '${snapshot.data?[index].title}',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    18.0, // Ukuran font yang lebih besar untuk judul
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    style: TextStyle(color: Colors.white),
-                                    DateFormat('dd/MM/yyyy').format(
-                                      DateTime.fromMillisecondsSinceEpoch(
-                                          snapshot.data?[index].timestamp ?? 0),
-                                    ),
+                            SizedBox(
+                                height:
+                                    8.0), // Spacing lebih besar untuk jarak antar elemen
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  DateFormat('dd/MM/yyyy').format(
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        snapshot.data?[index].timestamp ?? 0),
                                   ),
-                                ],
-                              ),
+                                  style: TextStyle(
+                                    color: Colors
+                                        .white70, // Warna teks yang lebih lembut
+                                    fontSize:
+                                        14.0, // Ukuran font yang lebih kecil untuk tanggal
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

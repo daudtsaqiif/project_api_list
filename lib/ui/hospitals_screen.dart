@@ -35,15 +35,15 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
-                      elevation: 8,
+                      elevation: 10,
                       shadowColor: Colors.black.withOpacity(0.3),
                       child: Container(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
-                          color: Colors.cyan[800],
-                          borderRadius: BorderRadius.circular(15.0),
+                          color: Colors.cyan[900],
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,33 +54,41 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
                                 fontSize: 18.0,
                               ),
                             ),
-                            SizedBox(height: 8.0),
+                            SizedBox(height: 10.0),
                             Text(
                               'Alamat: ${snapshot.data?[index].address}',
                               style: TextStyle(
-                                  color: Colors.white70, fontSize: 16),
+                                color: Colors.white70,
+                                fontSize: 16,
+                              ),
                             ),
-                            SizedBox(height: 4.0),
+                            SizedBox(height: 6.0),
                             Text(
                               'Daerah: ${snapshot.data?[index].region}',
                               style: TextStyle(
-                                  color: Colors.white70, fontSize: 16),
+                                color: Colors.white70,
+                                fontSize: 16,
+                              ),
                             ),
-                            SizedBox(height: 4.0),
+                            SizedBox(height: 6.0),
                             Text(
                               'Provinsi: ${snapshot.data?[index].province}',
                               style: TextStyle(
-                                  color: Colors.white70, fontSize: 16),
+                                color: Colors.white70,
+                                fontSize: 16,
+                              ),
                             ),
-                            SizedBox(height: 4.0),
+                            SizedBox(height: 6.0),
                             Text(
                               'No Tlp: ${snapshot.data?[index].phone}',
                               style: TextStyle(
-                                  color: Colors.white70, fontSize: 16),
+                                color: Colors.white70,
+                                fontSize: 16,
+                              ),
                             ),
                           ],
                         ),
