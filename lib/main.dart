@@ -28,7 +28,11 @@ class MyApp extends StatelessWidget {
         '/hospitals' :(context)=> HospitalsScreen(),
         '/news' :(context)=> NewsScreen(),
         '/stats' :(context)=> StatsScreen(),
-      },
+      }
     );
   }
 }
+
+
+
+
