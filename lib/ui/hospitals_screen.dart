@@ -58,6 +58,10 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                                 fontSize: 18.0,
                               ),
                             ),
+                            Divider(
+                              color: Colors.black.withOpacity(0.2),
+                              thickness: 1,
+                            ),
                             SizedBox(height: 10.0),
                             Text(
                               'Alamat: ${snapshot.data?[index].address}',

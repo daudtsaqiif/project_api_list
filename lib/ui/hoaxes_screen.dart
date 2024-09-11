@@ -58,13 +58,14 @@ class _HoaxesScreenState extends State<HoaxesScreen> {
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize:
-                                    18.0, // Ukuran font yang lebih besar untuk judul
+                                fontSize: 18.0,
                               ),
                             ),
-                            SizedBox(
-                                height:
-                                    8.0), // Spacing lebih besar untuk jarak antar elemen
+                            SizedBox(height: 8.0),
+                            Divider(
+                              color: Colors.black.withOpacity(0.3),
+                              thickness: 1,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -74,10 +75,8 @@ class _HoaxesScreenState extends State<HoaxesScreen> {
                                         snapshot.data?[index].timestamp ?? 0),
                                   ),
                                   style: TextStyle(
-                                    color: Colors
-                                        .white70, // Warna teks yang lebih lembut
-                                    fontSize:
-                                        14.0, // Ukuran font yang lebih kecil untuk tanggal
+                                    color: Colors.white70,
+                                    fontSize: 14.0,
                                   ),
                                 ),
                               ],

@@ -13,7 +13,7 @@ class StatsScreen extends StatefulWidget {
 
 class _StatsScreenState extends State<StatsScreen> {
   final Future<Stats> stats = ApiService().getStats();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +172,10 @@ class _StatsScreenState extends State<StatsScreen> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18.0,
                                   ),
+                                ),
+                                Divider(
+                                  color: Colors.black.withOpacity(0.2),
+                                  thickness: 1,
                                 ),
                                 SizedBox(height: 10),
                                 Row(

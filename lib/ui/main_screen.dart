@@ -2,6 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_api_list/model/hospitals.dart';
 import 'package:project_api_list/service/api_service.dart';
+import 'package:project_api_list/service/api_service.dart';
+import 'package:project_api_list/model/stats.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -12,6 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final Future<List<Hospitals>?> hospitals = ApiService().getHospitals();
+  final Future<Stats> stats = ApiService().getStats();
   final List<String> imgList = [
     'assets/images/rs.jpg',
     'assets/images/rs2.jpg',
@@ -26,6 +30,7 @@ class _MainScreenState extends State<MainScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              //name profile
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -48,16 +53,24 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ],
                     ),
-                    Image.asset(
-                      'assets/images/covid.png',
-                      width: 105,
-                    )
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8), //jika image mau kotak
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/image_user.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(
                 height: 30,
               ),
+              //card corona info
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
@@ -117,8 +130,29 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               SizedBox(
+                height: 8,
+              ),
+              //piechart
+              FutureBuilder(
+                future: stats,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    return PieChatWidget(
+                      number: snapshot.data!.numbers,
+                    );
+                  }
+                },
+              ),
+              SizedBox(
                 height: 15,
               ),
+              //serch bar
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextField(
@@ -139,6 +173,7 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(
                 height: 30,
               ),
+              //Our Information slider
               Row(
                 children: [
                   Judul(
@@ -324,6 +359,7 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(
                 height: 30,
               ),
+              //popular hospital
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -488,6 +524,107 @@ class Judul extends StatelessWidget {
                     fontSize: 19,
                     fontWeight: FontWeight.w600,
                     color: const Color.fromARGB(221, 19, 19, 19)),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PieChatWidget extends StatelessWidget {
+  const PieChatWidget({
+    super.key,
+    this.number,
+  });
+
+  final Numbers? number;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 230,
+          height: 230,
+          child: PieChart(
+            PieChartData(
+              centerSpaceRadius: 5,
+              borderData: FlBorderData(
+                show: false,
+              ),
+              sectionsSpace: 2,
+              sections: [
+                PieChartSectionData(
+                  value: number?.fatal!.toDouble(),
+                  color: Colors.red[900],
+                  radius: 100,
+                  title: '',
+                ),
+                PieChartSectionData(
+                  value: number?.infected!.toDouble(),
+                  color: Colors.yellow[800],
+                  radius: 100,
+                ),
+                PieChartSectionData(
+                  value: number?.recovered!.toDouble(),
+                  color: Colors.green[900],
+                  radius: 100,
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 10,
+                    height: 10,
+                    color: Colors.yellow[800],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Infected",
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 10,
+                    height: 10,
+                    color: Colors.green[900],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Recovered",
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 10,
+                    height: 10,
+                    color: Colors.red[900],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Fatal",
+                  )
+                ],
               ),
             ],
           ),
