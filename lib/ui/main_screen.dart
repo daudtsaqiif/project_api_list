@@ -7,7 +7,12 @@ import 'package:project_api_list/model/stats.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key, this.username, this.password, this.firstName, this.lastName});
+
+    final String? username;
+  final String? password;
+  final String? firstName;
+  final String? lastName;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -30,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              //name profile
+              //name profile header
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -57,7 +62,8 @@ class _MainScreenState extends State<MainScreen> {
                       width: 70,
                       height: 70,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), //jika image mau kotak
+                        borderRadius:
+                            BorderRadius.circular(8), //jika image mau kotak
                         image: DecorationImage(
                           image: AssetImage('assets/images/image_user.jpg'),
                           fit: BoxFit.cover,
@@ -102,7 +108,9 @@ class _MainScreenState extends State<MainScreen> {
                                     fontWeight: FontWeight.w600),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/covid-19');
+                                },
                                 child: Text(
                                   'Learn more',
                                   style: TextStyle(color: Colors.blue),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api_list/ui/covid_screen_detail.dart';
 import 'package:project_api_list/ui/hoaxes_screen.dart';
 import 'package:project_api_list/ui/hospitals_screen.dart';
 import 'package:project_api_list/ui/main_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/hospitals' :(context)=> HospitalsScreen(),
         '/news' :(context)=> NewsScreen(),
         '/stats' :(context)=> StatsScreen(),
+        '/covid-19' :(context)=> CovidScreenDetail(),
       }
     );
   }
