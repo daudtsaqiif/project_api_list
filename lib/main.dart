@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:project_api_list/ui/covid_screen_detail.dart';
 import 'package:project_api_list/ui/hoaxes_screen.dart';
 import 'package:project_api_list/ui/hospitals_screen.dart';
+import 'package:project_api_list/ui/login_screen.dart';
 import 'package:project_api_list/ui/main_screen.dart';
 import 'package:project_api_list/ui/news_screen.dart';
+import 'package:project_api_list/ui/register_screen.dart';
 import 'package:project_api_list/ui/stats_screen.dart';
 
 void main() {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MainScreen(),
+      home: RegisterScreen(),
       debugShowCheckedModeBanner: false,
       routes: {
         '/hoaxes' :(context)=> HoaxesScreen(),
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
         '/news' :(context)=> NewsScreen(),
         '/stats' :(context)=> StatsScreen(),
         '/covid-19' :(context)=> CovidScreenDetail(),
+        '/login' :(context) => LoginScreen(),
+        '/register' :(context) => RegisterScreen()
       }
     );
   }

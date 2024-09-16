@@ -7,9 +7,16 @@ import 'package:project_api_list/model/stats.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, this.username, this.password, this.firstName, this.lastName});
+  const MainScreen(
+      {super.key,
+      this.email,
+      this.username,
+      this.password,
+      this.firstName,
+      this.lastName});
 
-    final String? username;
+  final String? username;
+  final String? email;
   final String? password;
   final String? firstName;
   final String? lastName;
@@ -43,18 +50,15 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Text(
-                            'stay healthy!',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w600),
-                          ),
+                        Text(
+                          'stay healthy!',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600),
                         ),
                         Judul(
-                          judul: 'USER NAME',
+                          judul: '${widget.username}',
                         ),
                       ],
                     ),
@@ -74,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               //card corona info
               Padding(
@@ -428,7 +432,38 @@ class _MainScreenState extends State<MainScreen> {
                 },
               ),
               SizedBox(
-                height: 100,
+                height: 50,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: Text(
+                  'Logout',
+                  style: TextStyle(
+                    fontSize: 16, // Ukuran font yang lebih besar
+                    fontWeight: FontWeight.bold, // Teks tebal
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent, // Warna latar tombol
+                  foregroundColor: Colors.white, // Warna teks dan ikon
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(30), // Membuat tombol bulat
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15), // Ukuran padding yang proporsional
+                  shadowColor: Colors.black
+                      .withOpacity(0.3), // Warna bayangan lebih halus
+                  elevation: 8, // Efek bayangan lebih tinggi
+                  minimumSize: Size(150,
+                      50), // Ukuran minimum lebih besar untuk tombol yang lebih enak dilihat
+                ),
+              ),
+              SizedBox(
+                height: 50,
               ),
             ],
           ),

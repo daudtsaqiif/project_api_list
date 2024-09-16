@@ -23,9 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/covid.png',
               fit: BoxFit.cover,
-              width: 100.0,
+              width: 100,
             ),
             SizedBox(
               height: 10,
